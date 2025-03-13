@@ -1,3 +1,4 @@
+/** Error page for when user tries to access a page that is not found */
 export default function Error404() {
   return (
     <>

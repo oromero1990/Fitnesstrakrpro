@@ -1,3 +1,8 @@
+/**
+ * PageContext manages which page the application is currently on.
+ * The different routes are defined in <App>.
+ */
+
 import { createContext, useContext, useState } from "react";
 
 const PageContext = createContext();

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useApi } from "./ApiContext";
 
+/**
+ * Returns a function to mutate some data via the API, as well as some state
+ * that tracks the response of that mutation request.
+ */
 export default function useMutation(method, resource, tagsToInvalidate) {
   const { request, invalidateTags } = useApi();
 

@@ -1,3 +1,8 @@
+/**
+ * ApiContext attaches the user's authentication token to API requests when possible.
+ * It also handles tags to refresh appropriate queries after a mutation.
+ */
+
 import { createContext, useContext, useState } from "react";
 
 import { useAuth } from "../auth/AuthContext";
@@ -11,6 +16,10 @@ export function ApiProvider({ children }) {
   const headers = { "Content-Type": "application/json" };
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
+  /**
+   * Makes an API call and parses the response as JSON if possible.
+   * Throws an error if anything goes wrong.
+   */
   const request = async (resource, options) => {
     const response = await fetch(API + resource, {
       ...options,
@@ -23,9 +32,13 @@ export function ApiProvider({ children }) {
   };
 
   const [tags, setTags] = useState({});
+
+  /** Stores the provided query function for a given tag */
   const provideTag = (tag, query) => {
     setTags({ ...tags, [tag]: query });
   };
+
+  /** Calls all query functions associated with the given tags */
   const invalidateTags = (tagsToInvalidate) => {
     tagsToInvalidate.forEach((tag) => {
       const query = tags[tag];
