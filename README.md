@@ -1,4 +1,4 @@
-# Fitness Intro
+# Fitness Trackr
 
 Fitness Trackr is a platform where fitness enthusiasts can share their workouts and
 discover new routines. Anyone can browse the site and make an account, and users with an
@@ -6,90 +6,48 @@ account will be able to upload and manage their own activities.
 
 This information is accessible via [the Fitness Trackr API](https://fitnesstrac-kr.herokuapp.com/api).
 
-This activity will guide you through reading some code that has already been written. It
-involves many of the techniques introduced previously, such as effects, context, and custom hooks.
+You should already have read through this starter code in an earlier activity. Now, your
+task is to build out the activities page!
 
-> [!TIP]
+A [live demo of the finished project](https://fsa-fitness-trackr.netlify.app/) is available for you to reference.
+
+## Requirements
+
+Build out components as you see fit to meet the following requirements. This will involve
+using the new `useQuery` and `useMutation` hooks for any requests to the API, as well as
+referencing the `token` from `AuthContext` to provide different features for users who are
+logged in.
+
+- On the "activities" page, all users can see a list of all activities from the API,
+  even if they are not logged in.
+- `useQuery` is used to fetch the activities from the API.
+- The `token` from `AuthContext` is used to check if a user is logged in.
+- If a user is logged in, they will additionally see a "delete" button next to each
+  activity.
+- If the user clicks the delete button for an activity but they are not authorized to delete that
+  activity, they will see a corresponding error message.
+- If the user clicks the delete button for an activity and they _are_ authorized to delete
+  that activity, that activity will be deleted.
+- `useMutation` is used to delete an activity via the API.
+- On the "activities" page, if a user is logged in, they will also see a form where they
+  can fill out information about a new activity.
+- If the user submits the form correctly, their new activity will be added to the API.
+- If something goes wrong with adding an activity, they will see a corresponding error message.
+- `useMutation` is used to add an activity via the API.
+
+> [!NOTE]
 >
-> Remember that you can clone this repository down and run the code locally
-> to help you answer the questions as you read the code!
+> If `useQuery` and `useMutation` are used correctly, the list of activities will
+> automatically refresh after adding or deleting an activity!
 
-## Navigating between different pages
+> [!WARNING]
+>
+> Please be mindful of the activities that you create and delete!
+> This API is currently **not instanced by cohort** so everyone will be working
+> with the _same set of data_, including past and future cohorts.
+> The database is occasionally reset, but please reach out to an instructor or staff
+> member if you notice an issue with this API.
 
-The app will render different components depending on which page is active. This logic is
-managed in `PageContext`.
+## Submission
 
-1. When the app first loads, what page does it start on?
-2. What are the four possible pages of `<App>`?
-3. Notice that `<App>` is wrapped by `<Layout>` in `main.jsx`. What is the purpose of the
-   `<Layout>` component?
-4. How does `<Navbar>` navigate users to different pages?
-5. `<Navbar>` uses the presence of a token to tell whether the user is logged in or not.\
-   Where is `<Navbar>` getting the token from?
-6. What does `<Navbar>` render if the user is logged in?
-7. What does `<Navbar>` render if the user is _not_ logged in?
-
-## Handle user authentication
-
-Users can register for a new account, or log into an existing account. This logic is
-managed in `AuthContext`.
-
-8. What state does `AuthContext` manage? What value does it provide?
-9. Which API endpoint does the `register` function make a request to?
-10. What happens if the request is successful?
-11. How are the `register` and `login` functions different?
-12. What does it mean for a user to log out? What state is changed?
-
-The `<Register>` and `<Login>` components use form actions to authenticate the user.
-
-13. What page is the user redirected to after they successfully register for an account?
-14. What happens if there's an error with registration?
-15. How are the `<Register>` and `<Login>` components different?
-
-## Handle API communication
-
-The API will send back a token once the user successfully registers or logs in. We want to
-attach that token to any future requests to the API so that the user can access protected
-routes.
-
-There's a lot happening, so read through this portion very carefully!
-
-### useQuery and useMutation
-
-The API logic is managed in `ApiContext`, but the rest of our app will mostly be
-interacting with the API via two custom hooks: `useQuery` and `useMutation`.
-
-16. Let's start with `useQuery`. What is the purpose of the `data` state variable?
-17. What about `loading` and `error`? What do these state variables represent?
-18. What happens in the `finally` block of the `try..catch` statement?
-19. How often does the `useEffect` run, and what does it do?
-20. Where are `provideTag` and `request` coming from?
-21. What does the `useQuery` hook return?
-22. Now take a look at `useMutation`.
-    1. How are the parameters different from `useQuery`'s parameters?
-    2. How is the API request different from `useQuery`'s request?
-    3. What does `useMutation` return?
-
-### Reuse request logic
-
-Both `useQuery` and `useMutation` make requests to the API; this shared logic is kept in
-`ApiContext`.
-
-23. How does `ApiContext` use the token from `AuthContext`?
-24. `/json/` is an example of a **regular expression**, which are often used to _test_
-    if a pattern can be found in a string. How is it used in `request`?
-25. What does `request` return if the API call succeeds? What if it fails?
-26. In summary, defining `request` in `ApiContext` allows `useQuery` and `useMutation`
-    to share what logic and information?
-
-### Refresh queries automatically with tags
-
-**Tags** are a strategy used to ensure that our local application state stays up to date
-with the data on the server. Each query can provide a tag, and each mutation can invalidate a list of tags,
-which specify the queries that need to be refreshed after that mutation.
-
-27. In `ApiContext`, what is the initial value of the `tags` state variable?
-28. What does `useQuery` provide as arguments into `provideTag`?
-29. How does `provideTag` change the `tags` state?
-30. What argument does `useMutation` pass into `invalidateTags`?
-31. How does `invalidateTags` use the `tags` state?
+Please submit the link to your public GitHub repository.
