@@ -2,7 +2,7 @@ import { usePage } from "./layout/PageContext";
 
 import Register from "./auth/Register";
 import Login from "./auth/Login";
-import ActivityPage from "./activities/ActivityPage";
+import ActivitiesPage from "./activities/ActivitiesPage";
 import Error404 from "./Error404.jsx";
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
 
   if (page === "register") return <Register />;
   if (page === "login") return <Login />;
-  if (page === "activities") return <ActivityPage />;
+  if (page === "activities") return <ActivitiesPage />;
 
   return <Error404 />;
 }
