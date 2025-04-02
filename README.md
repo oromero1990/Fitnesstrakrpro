@@ -4,7 +4,7 @@ Fitness Trackr is a platform where fitness enthusiasts can share their workouts 
 discover new routines. Anyone can browse the site and make an account, and users with an
 account will be able to upload and manage their own activities.
 
-This information is accessible via [the Fitness Trackr API](https://fitnesstrac-kr.herokuapp.com/api).
+This information is accessible via [the Fitness Trackr API](https://fitnesstrac-kr.herokuapp.com/).
 
 In this workshop, you will continue to build out different features for this application.
 
