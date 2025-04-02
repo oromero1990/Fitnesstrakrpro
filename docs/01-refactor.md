@@ -22,6 +22,19 @@ Your main task will be to refactor this code to use React Router.
 7. Move the "delete" buttons from `<ActivityList>` into your new page so that logged-in
    users now need to visit the page for a single specific activity in order to delete it.
 
+> [!NOTE]
+> Here is the endpoint to fetch information about a single activity:
+> ```
+> GET /activities/{id}
+> ```
+>
+> Response schema:
+> - id: number
+> - creatorId: number
+> - name: string
+> - description: string
+> - creatorName: string
+
 ## Submission
 
 Once you have completed all the steps above and you have tested your app to make sure that
