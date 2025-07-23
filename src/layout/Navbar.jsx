@@ -16,6 +16,7 @@ export default function Navbar() {
       <p>Fitness Trackr</p>
       <nav>
         <Link to="/">Activities</Link>
+        <Link to="/routines">Routines</Link> {/* 👈 Add this line */}
         {token ? (
           <button onClick={handleLogout}>Log out</button>
         ) : (
